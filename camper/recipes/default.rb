@@ -20,11 +20,10 @@ link "/etc/nginx/sites-enabled/#{node['camper']['site']['name']}" do
   to "/etc/nginx/sites-available/#{node['camper']['site']['name']}"
 end
 
-
 directory node['camper']['site']['dir'] do
   owner "www-data"
   group "www-data"
-  mode 00644
+  mode 00755
   action :create
   recursive true
 end
@@ -39,11 +38,10 @@ template "/root/.s3cfg" do
   })
 end
 
-
 execute "sync site folder" do
 	command "s3cmd --config=/root/.s3cfg --delete-removed sync -v s3://#{node['camper']['s3-bucket']} #{node['camper']['site']['dir']}"
 end
 
 execute "fix permissions" do
-	command " sudo chown -R www-data:www-data #{node['camper']['site']['dir']}/*"
+	command "sudo chown -R www-data:www-data #{node['camper']['site']['dir']}/*"
 end
