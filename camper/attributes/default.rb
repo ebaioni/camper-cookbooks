@@ -1,4 +1,4 @@
-default['nginx']['server_token'] = 'off'
+default['nginx']['server_tokens'] = 'off'
 
 default['camper'] = {}
 default['camper']['site'] = {}
