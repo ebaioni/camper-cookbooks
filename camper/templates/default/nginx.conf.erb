@@ -5,12 +5,12 @@ server {
 
   access_log  /var/log/nginx/localhost.access.log;
 
-  location ~* .(jpg|jpeg|png|gif|ico|css|js|svg)$ {
-	   expires 10d;
+  location ~* .(<%= @static.join('|') %>)$ {
+	   expires <%= @expire %>;
   }
 
   location / {
-    root   /var/www/camper;
+    root   <%= @dir %>;
     index  index.html index.htm;
   }
 }

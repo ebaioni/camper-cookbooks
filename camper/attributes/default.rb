@@ -1,0 +1,50 @@
+default['nginx']['server_token'] = 'off'
+
+default['camper'] = {}
+default['camper']['site'] = {}
+default['camper']['site']['dir'] = "/var/www/camper"
+default['camper']['site']['name'] = "camper"
+
+default['camper']['static'] = ['jpg', 'jpeg', 'png', 'gif', 'ico', 'css', 'js', 'svg']
+default['camper']['expire'] = "10d"
+default['camper']['s3-bucket'] = 'camper-website'
+
+default["s3cmd"]["options"] = {}
+default["s3cmd"]["options"]['access_key'] = ''
+default["s3cmd"]["options"]['bucket_location'] = 'US'
+default["s3cmd"]["options"]['cloudfront_host'] = 'cloudfront.amazonaws.com'
+default["s3cmd"]["options"]['cloudfront_resource'] = '/2010-07-15/distribution'
+default["s3cmd"]["options"]['default_mime_type'] = 'binary/octet-stream'
+default["s3cmd"]["options"]['delete_removed'] = 'False'
+default["s3cmd"]["options"]['dry_run'] = 'False'
+default["s3cmd"]["options"]['encoding'] = 'UTF-8'
+default["s3cmd"]["options"]['encrypt'] = 'False'
+default["s3cmd"]["options"]['follow_symlinks'] = 'False'
+default["s3cmd"]["options"]['force'] = 'False'
+default["s3cmd"]["options"]['get_continue'] = 'False'
+default["s3cmd"]["options"]['gpg_command'] = '/usr/bin/gpg'
+default["s3cmd"]["options"]['gpg_decrypt'] = '%(gpg_command)s -d --verbose --no-use-agent --batch --yes --passphrase-fd %(passphrase_fd)s -o %(output_file)s %(input_file)s'
+default["s3cmd"]["options"]['gpg_encrypt'] = '%(gpg_command)s -c --verbose --no-use-agent --batch --yes --passphrase-fd %(passphrase_fd)s -o %(output_file)s %(input_file)s'
+default["s3cmd"]["options"]['gpg_passphrase'] = ''
+default["s3cmd"]["options"]['guess_mime_type'] = 'True'
+default["s3cmd"]["options"]['host_base'] = 's3.amazonaws.com'
+default["s3cmd"]["options"]['host_bucket'] = '%(bucket)s.s3.amazonaws.com'
+default["s3cmd"]["options"]['human_readable_sizes'] = 'False'
+default["s3cmd"]["options"]['list_md5'] = 'False'
+default["s3cmd"]["options"]['log_target_prefix'] = ''
+default["s3cmd"]["options"]['preserve_attrs'] = 'True'
+default["s3cmd"]["options"]['progress_meter'] = 'True'
+default["s3cmd"]["options"]['proxy_host'] = ''
+default["s3cmd"]["options"]['proxy_port'] = 0
+default["s3cmd"]["options"]['recursive'] = 'False'
+default["s3cmd"]["options"]['recv_chunk'] = 4096
+default["s3cmd"]["options"]['reduced_redundancy'] = 'False'
+default["s3cmd"]["options"]['secret_key'] = ''
+default["s3cmd"]["options"]['send_chunk'] = 4096
+default["s3cmd"]["options"]['simpledb_host'] = 'sdb.amazonaws.com'
+default["s3cmd"]["options"]['skip_existing'] = 'False'
+
+default["s3cmd"]["options"]['socket_timeout'] = 10
+default["s3cmd"]["options"]['urlencoding_mode'] = 'normal'
+default["s3cmd"]["options"]['use_https'] = 'False'
+default["s3cmd"]["options"]['verbosity'] = 'WARNING'
