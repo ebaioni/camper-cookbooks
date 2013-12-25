@@ -28,18 +28,8 @@ directory node['camper']['site']['dir'] do
   recursive true
 end
 
-template "/root/.s3cfg" do
-  source 's3cmd.conf.erb'
-  owner  'root'
-  group  'root'
-  mode   '0644'
-  variables({
-    :options => node['s3cmd']['options']
-  })
-end
-
 execute "sync site folder" do
-	command "s3cmd --config=/root/.s3cfg --delete-removed sync -v s3://#{node['camper']['s3-bucket']} #{node['camper']['site']['dir']}"
+	command "aws s3 sync --delete s3://#{node['camper']['s3-bucket']} #{node['camper']['site']['dir']}"
 end
 
 execute "fix permissions" do
