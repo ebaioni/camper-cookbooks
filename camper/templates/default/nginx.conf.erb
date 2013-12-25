@@ -6,7 +6,8 @@ server {
   access_log  /var/log/nginx/localhost.access.log;
 
   location ~* .(<%= @static.join('|') %>)$ {
-	   expires <%= @expire %>;
+	 expires <%= @expire %>;
+     root   <%= @dir %>;
   }
 
   location / {
