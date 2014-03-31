@@ -4,7 +4,14 @@ server {
   server_name  127.0.0.1;
   charset utf-8;
   access_log  /var/log/nginx/localhost.access.log;
-
+  
+  if ($http_user_agent ~* (ZmEu|-)) {
+        return 503;
+  }
+  if ($http_user_agent ~ ".*Indy Library.*") {
+        return 503;
+  }
+  
   location ~* .(<%= @static.join('|') %>)$ {
 	 expires <%= @expire %>;
      root   <%= @dir %>;
