@@ -18,7 +18,11 @@ server {
   }
 
   location / {
+    if ($uri !~ (^/$|^/index.html$|^/robots.txt)) {
+        return 503;
+    }
     root   <%= @dir %>;
     index  index.html index.htm;
   }
+  
 }
